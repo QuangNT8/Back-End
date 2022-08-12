@@ -26,6 +26,3 @@ clean:
 	find . -type f -name '*.pb.go' -delete
 	find . -type f -name '*.swagger.json' -delete
 	find . -type f -name '*.pb.gw.go' -delete
-	rm -f $(EXAMPLE_CLIENT_SRCS)
-
-.PHONY: generate test clean proto install
