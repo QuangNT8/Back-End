@@ -4,11 +4,13 @@ syntax = "proto3";
 //
 // Echo Service API consists of a single service which returns
 // a message.
+package services;
+
 import "google/api/annotations.proto";
 import "google/protobuf/field_mask.proto";
 import "google/protobuf/struct.proto";
 
-option go_package = "back-end/proto";
+option go_package = "./;services";
 
 // Embedded represents a message embedded in SimpleMessage.
 message Embedded {

@@ -8,7 +8,7 @@ import (
 
 	"google.golang.org/grpc/credentials/insecure"
 
-	serv "back-end/proto"
+	services "back-end/proto/services"
 
 	gwruntime "github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	_ "google.golang.org/genproto/googleapis/rpc/errdetails"
@@ -21,7 +21,7 @@ func newGateway(ctx context.Context, conn *grpc.ClientConn, opts []gwruntime.Ser
 	mux := gwruntime.NewServeMux(opts...)
 
 	for _, f := range []func(context.Context, *gwruntime.ServeMux, *grpc.ClientConn) error{
-		serv.RegisterEchoServiceHandler,
+		services.RegisterEchoServiceHandler,
 		// standalone.RegisterUnannotatedEchoServiceHandler,
 		// serv.RegisterStreamServiceHandler,
 		// serv.RegisterABitOfEverythingServiceHandler,

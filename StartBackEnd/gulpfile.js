@@ -34,7 +34,7 @@ gulp.task('grpc-server', ['server'], function () {
 
 gulp.task('serve-gateway', ['gateway', 'grpc-server'], function () {
   gprocess.start('gateway-server', 'bin/gateway-server', [
-    '--logtostderr', '--openapi_dir', path.join(__dirname, "../proto"),
+    '--logtostderr', '--openapi_dir', path.join(__dirname, "../proto/services"),
   ]);
   gulp.watch('bin/gateway-server', ['serve-gateway']);
 });

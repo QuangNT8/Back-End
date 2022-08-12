@@ -1,7 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "proto/echo_service.proto",
+    "title": "Echo Service",
+    "description": "Echo Service API consists of a single service which returns\na message.",
     "version": "version not set"
   },
   "tags": [
@@ -25,7 +26,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/SimpleMessage"
+              "$ref": "#/definitions/servicesSimpleMessage"
             }
           },
           "default": {
@@ -111,7 +112,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/SimpleMessage"
+              "$ref": "#/definitions/servicesSimpleMessage"
             }
           },
           "default": {
@@ -197,7 +198,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/SimpleMessage"
+              "$ref": "#/definitions/servicesSimpleMessage"
             }
           },
           "default": {
@@ -283,7 +284,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/SimpleMessage"
+              "$ref": "#/definitions/servicesSimpleMessage"
             }
           },
           "default": {
@@ -363,7 +364,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/SimpleMessage"
+              "$ref": "#/definitions/servicesSimpleMessage"
             }
           },
           "default": {
@@ -442,7 +443,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/SimpleMessage"
+              "$ref": "#/definitions/servicesSimpleMessage"
             }
           },
           "default": {
@@ -459,7 +460,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/SimpleMessage"
+              "$ref": "#/definitions/servicesSimpleMessage"
             }
           }
         ],
@@ -476,7 +477,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/SimpleMessage"
+              "$ref": "#/definitions/servicesSimpleMessage"
             }
           },
           "default": {
@@ -499,7 +500,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Embedded"
+              "$ref": "#/definitions/servicesEmbedded"
             }
           },
           {
@@ -556,7 +557,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/SimpleMessage"
+              "$ref": "#/definitions/servicesSimpleMessage"
             }
           },
           "default": {
@@ -641,7 +642,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/DynamicMessageUpdate"
+              "$ref": "#/definitions/servicesDynamicMessageUpdate"
             }
           },
           "default": {
@@ -657,7 +658,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/DynamicMessage"
+              "$ref": "#/definitions/servicesDynamicMessage"
             }
           },
           {
@@ -680,7 +681,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/SimpleMessage"
+              "$ref": "#/definitions/servicesSimpleMessage"
             }
           },
           "default": {
@@ -759,71 +760,6 @@
     }
   },
   "definitions": {
-    "DynamicMessage": {
-      "type": "object",
-      "properties": {
-        "structField": {
-          "type": "object"
-        },
-        "valueField": {}
-      },
-      "description": "DynamicMessage represents a message which can have its structure\nbuilt dynamically using Struct and Values."
-    },
-    "DynamicMessageUpdate": {
-      "type": "object",
-      "properties": {
-        "body": {
-          "$ref": "#/definitions/DynamicMessage"
-        },
-        "updateMask": {
-          "type": "string"
-        }
-      }
-    },
-    "Embedded": {
-      "type": "object",
-      "properties": {
-        "progress": {
-          "type": "string",
-          "format": "int64"
-        },
-        "note": {
-          "type": "string"
-        }
-      },
-      "description": "Embedded represents a message embedded in SimpleMessage."
-    },
-    "SimpleMessage": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Id represents the message identifier."
-        },
-        "num": {
-          "type": "string",
-          "format": "int64"
-        },
-        "lineNum": {
-          "type": "string",
-          "format": "int64"
-        },
-        "lang": {
-          "type": "string"
-        },
-        "status": {
-          "$ref": "#/definitions/Embedded"
-        },
-        "en": {
-          "type": "string",
-          "format": "int64"
-        },
-        "no": {
-          "$ref": "#/definitions/Embedded"
-        }
-      },
-      "description": "SimpleMessage represents a simple message sent to the Echo service."
-    },
     "protobufAny": {
       "type": "object",
       "properties": {
@@ -858,6 +794,71 @@
           }
         }
       }
+    },
+    "servicesDynamicMessage": {
+      "type": "object",
+      "properties": {
+        "structField": {
+          "type": "object"
+        },
+        "valueField": {}
+      },
+      "description": "DynamicMessage represents a message which can have its structure\nbuilt dynamically using Struct and Values."
+    },
+    "servicesDynamicMessageUpdate": {
+      "type": "object",
+      "properties": {
+        "body": {
+          "$ref": "#/definitions/servicesDynamicMessage"
+        },
+        "updateMask": {
+          "type": "string"
+        }
+      }
+    },
+    "servicesEmbedded": {
+      "type": "object",
+      "properties": {
+        "progress": {
+          "type": "string",
+          "format": "int64"
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "description": "Embedded represents a message embedded in SimpleMessage."
+    },
+    "servicesSimpleMessage": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Id represents the message identifier."
+        },
+        "num": {
+          "type": "string",
+          "format": "int64"
+        },
+        "lineNum": {
+          "type": "string",
+          "format": "int64"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/servicesEmbedded"
+        },
+        "en": {
+          "type": "string",
+          "format": "int64"
+        },
+        "no": {
+          "$ref": "#/definitions/servicesEmbedded"
+        }
+      },
+      "description": "SimpleMessage represents a simple message sent to the Echo service."
     }
   }
 }

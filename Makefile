@@ -14,7 +14,7 @@ proto:
 	#rm proto/echo_service.pb.go
 	#rm proto/echo_service.pb.gw.go
 	#rm proto/echo_service_grpc.pb.go
-	buf generate --path proto/echo_service.proto
+	buf generate --path proto/services/echo_service.proto
 	
 build:
 	go build server/main.go

@@ -1,7 +1,7 @@
 package server
 
 import (
-	services "back-end/proto"
+	services "back-end/proto/services"
 	"context"
 	"net"
 	"net/http"
