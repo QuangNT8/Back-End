@@ -17,29 +17,29 @@ gulp.task('bower', function () {
 
 // Build gRPC-Server
 gulp.task('server', shell.task([
-  'go build -o bin/example-server back-end/cmd/example-grpc-server',
+  'go build -o bin/grpc-server back-end/cmd/cmd-grpc-server',
 ]));
 
 // Build Gateway-Server
 gulp.task('gateway', shell.task([
-  'go build -o bin/example-gw back-end/cmd/example-gateway-server',
+  'go build -o bin/gateway-server back-end/cmd/cmd-gateway-server',
 ]));
 
-gulp.task('serve-server', ['server'], function () {
-  gprocess.start('server-server', 'bin/example-server', [
+gulp.task('grpc-server', ['server'], function () {
+  gprocess.start('server-server', 'bin/grpc-server', [
     '--logtostderr',
   ]);
-  gulp.watch('bin/example-server', ['serve-server']);
+  gulp.watch('bin/grpc-server', ['grpc-server']);
 });
 
-gulp.task('serve-gateway', ['gateway', 'serve-server'], function () {
-  gprocess.start('gateway-server', 'bin/example-gw', [
-    '--logtostderr', '--openapi_dir', path.join(__dirname, "../proto/examplepb"),
+gulp.task('serve-gateway', ['gateway', 'grpc-server'], function () {
+  gprocess.start('gateway-server', 'bin/gateway-server', [
+    '--logtostderr', '--openapi_dir', path.join(__dirname, "../proto"),
   ]);
-  gulp.watch('bin/example-gw', ['serve-gateway']);
+  gulp.watch('bin/gateway-server', ['serve-gateway']);
 });
 
-gulp.task('backends', ['serve-gateway', 'serve-server']);
+gulp.task('backends', ['serve-gateway', 'grpc-server']);
 
 var specFiles = ['*.spec.js'];
 gulp.task('test', ['backends'], function (done) {
