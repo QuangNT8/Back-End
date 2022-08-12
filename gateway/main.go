@@ -47,6 +47,7 @@ func Run(ctx context.Context, opts Options) error {
 	}()
 
 	mux := http.NewServeMux()
+	glog.Infof("Open API Dir:", opts.OpenAPIDir)
 	mux.HandleFunc("/openapiv2/", openAPIServer(opts.OpenAPIDir))
 	mux.HandleFunc("/healthz", healthzServer(conn))
 

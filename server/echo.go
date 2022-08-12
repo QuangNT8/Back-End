@@ -2,6 +2,7 @@ package server
 
 import (
 	"context"
+	"fmt"
 
 	services "back-end/proto/services"
 
@@ -22,6 +23,7 @@ func NewEchoServer() services.EchoServiceServer {
 
 func (s *echoServer) Echo(ctx context.Context, msg *services.SimpleMessage) (*services.SimpleMessage, error) {
 	glog.Info(msg)
+	fmt.Println("Echo")
 	return msg, nil
 }
 
