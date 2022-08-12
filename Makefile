@@ -13,12 +13,9 @@ install:
 proto:
 	#rm proto/echo_service.pb.go
 	#rm proto/echo_service.pb.gw.go
+	#rm proto/echo_service_grpc.pb.go
 	buf generate --path proto/echo_service.proto
 	
-test: proto
-	go test -short -race ./...
-	go test -race ./examples/internal/integration -args -network=unix -endpoint=test.sock
-
 build:
 	go build server/main.go
 
@@ -26,3 +23,5 @@ clean:
 	find . -type f -name '*.pb.go' -delete
 	find . -type f -name '*.swagger.json' -delete
 	find . -type f -name '*.pb.gw.go' -delete
+
+.PHONY: clean proto install

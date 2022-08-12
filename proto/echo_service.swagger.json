@@ -1,8 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Echo Service",
-    "description": "Echo Service API consists of a single service which returns\na message.",
+    "title": "proto/echo_service.proto",
     "version": "version not set"
   },
   "tags": [
@@ -26,7 +25,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/examplepbSimpleMessage"
+              "$ref": "#/definitions/SimpleMessage"
             }
           },
           "default": {
@@ -112,7 +111,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/examplepbSimpleMessage"
+              "$ref": "#/definitions/SimpleMessage"
             }
           },
           "default": {
@@ -198,7 +197,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/examplepbSimpleMessage"
+              "$ref": "#/definitions/SimpleMessage"
             }
           },
           "default": {
@@ -284,7 +283,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/examplepbSimpleMessage"
+              "$ref": "#/definitions/SimpleMessage"
             }
           },
           "default": {
@@ -364,7 +363,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/examplepbSimpleMessage"
+              "$ref": "#/definitions/SimpleMessage"
             }
           },
           "default": {
@@ -443,7 +442,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/examplepbSimpleMessage"
+              "$ref": "#/definitions/SimpleMessage"
             }
           },
           "default": {
@@ -460,7 +459,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/examplepbSimpleMessage"
+              "$ref": "#/definitions/SimpleMessage"
             }
           }
         ],
@@ -477,7 +476,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/examplepbSimpleMessage"
+              "$ref": "#/definitions/SimpleMessage"
             }
           },
           "default": {
@@ -500,7 +499,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/examplepbEmbedded"
+              "$ref": "#/definitions/Embedded"
             }
           },
           {
@@ -557,7 +556,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/examplepbSimpleMessage"
+              "$ref": "#/definitions/SimpleMessage"
             }
           },
           "default": {
@@ -642,7 +641,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/examplepbDynamicMessageUpdate"
+              "$ref": "#/definitions/DynamicMessageUpdate"
             }
           },
           "default": {
@@ -658,7 +657,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/examplepbDynamicMessage"
+              "$ref": "#/definitions/DynamicMessage"
             }
           },
           {
@@ -681,7 +680,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/examplepbSimpleMessage"
+              "$ref": "#/definitions/SimpleMessage"
             }
           },
           "default": {
@@ -760,7 +759,7 @@
     }
   },
   "definitions": {
-    "examplepbDynamicMessage": {
+    "DynamicMessage": {
       "type": "object",
       "properties": {
         "structField": {
@@ -770,18 +769,18 @@
       },
       "description": "DynamicMessage represents a message which can have its structure\nbuilt dynamically using Struct and Values."
     },
-    "examplepbDynamicMessageUpdate": {
+    "DynamicMessageUpdate": {
       "type": "object",
       "properties": {
         "body": {
-          "$ref": "#/definitions/examplepbDynamicMessage"
+          "$ref": "#/definitions/DynamicMessage"
         },
         "updateMask": {
           "type": "string"
         }
       }
     },
-    "examplepbEmbedded": {
+    "Embedded": {
       "type": "object",
       "properties": {
         "progress": {
@@ -794,7 +793,7 @@
       },
       "description": "Embedded represents a message embedded in SimpleMessage."
     },
-    "examplepbSimpleMessage": {
+    "SimpleMessage": {
       "type": "object",
       "properties": {
         "id": {
@@ -813,14 +812,14 @@
           "type": "string"
         },
         "status": {
-          "$ref": "#/definitions/examplepbEmbedded"
+          "$ref": "#/definitions/Embedded"
         },
         "en": {
           "type": "string",
           "format": "int64"
         },
         "no": {
-          "$ref": "#/definitions/examplepbEmbedded"
+          "$ref": "#/definitions/Embedded"
         }
       },
       "description": "SimpleMessage represents a simple message sent to the Echo service."
